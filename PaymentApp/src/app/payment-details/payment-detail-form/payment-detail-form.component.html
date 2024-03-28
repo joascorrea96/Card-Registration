@@ -1,0 +1,32 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="off">
+  <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId">
+  <div class="mb-3">
+    <label>Proprietário do Cartão</label>
+    <input class="form-control form-control-lg" placeholder="Nome do Cartão" #cardOwnerName="ngModel" name="cardOwnerName"
+      [(ngModel)]="service.formData.cardOwnerName" required>
+  </div>
+  <div class="mb-3">
+    <label>Número do Cartão</label>
+    <input class="form-control form-control-lg" placeholder="Número de 16 Dígitos" #cardNumber="ngModel"
+      name="cardNumber" [(ngModel)]="service.formData.cardNumber" required minlength="16" maxlength="16">
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col-6">
+      <label>Código de Segurança</label>
+      <input class="form-control form-control-lg" placeholder="CVV" type="password" #securityCode="ngModel"
+        name="securityCode" [(ngModel)]="service.formData.securityCode" required minlength="3" maxlength="3">
+    </div>
+    <div class="mb-3 col-6">
+      <label>Validade</label>
+      <input class="form-control form-control-lg" placeholder="MM/AA" #expirationDate="ngModel" name="expirationDate"
+        [(ngModel)]="service.formData.expirationDate" required minlength="5" maxlength="5">
+    </div>
+  </div>
+  <div class="d-grid">
+    <button class="btn btn-lg btn-success" type="submit">
+      Cadastrar
+    </button>
+  </div>
+
+</form>
